@@ -13,8 +13,6 @@ class PdfServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('DOMPDF', function() {
-
-
             return new \DOMPDF();
         });
 
