@@ -6,13 +6,6 @@ use Vsmoraes\Pdf\Dompdf as MyDompdf;
 
 class PdfServiceProvider extends ServiceProvider
 {
-    /**
-     *
-     */
-    public function boot()
-    {
-        $this->package('vsmoraes/pdf');
-    }
 
     /**
      *
