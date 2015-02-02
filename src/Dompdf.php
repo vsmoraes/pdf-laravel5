@@ -86,7 +86,7 @@ class Dompdf implements Pdf
         $this->render();
         $this->clear();
 
-        return $this->dompdfInstance->stram($this->filename(), $options);
+        return $this->dompdfInstance->stream($this->filename(), $options);
     }
 
     /**

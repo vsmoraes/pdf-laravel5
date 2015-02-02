@@ -13,13 +13,17 @@ class PdfServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('DOMPDF', function() {
-            define('DOMPDF_ENABLE_AUTOLOAD', false);
 
-            require_once base_path() . '/vendor/dompdf/dompdf/dompdf_config.inc.php';
 
             return new \DOMPDF();
         });
 
-        $this->app->bind(Pdf::class, MyDompdf::class);
+        $this->app->bind(Pdf::class, function() {
+            define('DOMPDF_ENABLE_AUTOLOAD', false);
+
+            require_once base_path() . '/vendor/dompdf/dompdf/dompdf_config.inc.php';
+
+            return new Dompdf(new \DOMPDF());
+        });
     }
 }
