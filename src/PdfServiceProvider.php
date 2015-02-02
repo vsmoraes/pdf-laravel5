@@ -15,7 +15,7 @@ class PdfServiceProvider extends ServiceProvider
         $this->app->bind('DOMPDF', function() {
             define('DOMPDF_ENABLE_AUTOLOAD', false);
 
-            require_once __DIR__ . '/../vendor/dompdf/dompdf/dompdf_config.inc.php';
+            require_once base_path() . '/vendor/dompdf/dompdf/dompdf_config.inc.php';
 
             return new \DOMPDF();
         });
