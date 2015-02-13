@@ -97,7 +97,6 @@ class Dompdf implements Pdf
     {
         return new Response($this->show($options), 200, [
             'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'attachment; filename=".' . $this->filename() . '"'
         ]);
     }
 
