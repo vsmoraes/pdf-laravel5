@@ -16,7 +16,7 @@ class PdfServiceProvider extends ServiceProvider
             return new \DOMPDF();
         });
 
-        $this->app->bind(Pdf::class, function() {
+        $this->app->bind('Vsmoraes\Pdf\Pdf', function() {
             define('DOMPDF_ENABLE_AUTOLOAD', false);
 
             require_once base_path() . '/vendor/dompdf/dompdf/dompdf_config.inc.php';
