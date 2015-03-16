@@ -2,6 +2,9 @@
 
 Laravel module for dompfg
 
+[![Build Status](https://api.travis-ci.org/vsmoraes/pdf-laravel5.svg)](https://travis-ci.org/vsmoraes/pdf-laravel5)
+[![License](https://poser.pugx.org/vsmoraes/laravel-pdf/license.svg)](https://packagist.org/packages/vsmoraes/laravel-pdf)
+
 ## Instalation
 Add:
 ```
