@@ -1,6 +1,6 @@
 {
     "name": "vsmoraes/laravel-pdf",
-    "description": "Laravel 5 module for dompdf",
+    "description": "DOMPDF module for Laravel 5",
     "keywords": ["laravel", "dompdf", "pdf"],
     "license": "MIT",
     "authors": [
