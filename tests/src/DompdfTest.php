@@ -3,24 +3,32 @@
 class DompdfTest extends PHPUnit_Framework_TestCase
 {
 
-    /**
-     * @tests
-     */
-    public function load()
+    public function testLoadHtml()
     {
         $stub = $this->getMockBuilder('\DOMPDF')
-            ->setMethods(null)
+            ->setMethods(['load_html'])
             ->getMock();
 
-        $mock = $this->getMockBuilder('Vsmoraes\Pdf\Dompdf')
-            ->setConstructorArgs([$stub])
-            ->setMethods(null)
-            ->getMock();
+        $pdf = new \Vsmoraes\Pdf\Dompdf($stub, []);
 
         $stub->expects($this->once())
             ->method('load_html');
 
-        $mock->load('<html><head></head><body></body></html>');
+        $pdf->load('<html><head></head><body></body></html>');
+    }
+
+    public function testShowHtml()
+    {
+        $stub = $this->getMockBuilder('\DOMPDF')
+            ->getMock();
+
+        $pdf = new \Vsmoraes\Pdf\Dompdf($stub, []);
+
+        $stub->expects($this->once())
+            ->method('stream');
+
+        $pdf->load('<html><head></head><body></body></html>');
+        $pdf->show();
     }
 
 }
