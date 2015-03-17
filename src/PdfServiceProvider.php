@@ -6,6 +6,12 @@ use Vsmoraes\Pdf\Dompdf as MyDompdf;
 
 class PdfServiceProvider extends ServiceProvider
 {
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = true;
 
     /**
      * Register the classes on the IoC container
@@ -25,9 +31,10 @@ class PdfServiceProvider extends ServiceProvider
 
             return new Dompdf(new \DOMPDF());
         });
+    }
 
-        $this->app->bind('PDF', function() {
-            return $this->app->make('Vsmoraes\Pdf\Pdf');
-        });
+    public function provides()
+    {
+        return ['pdf'];
     }
 }

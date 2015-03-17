@@ -21,9 +21,16 @@ composer require vsmoraes/laravel-pdf
 
 Then add:
 ```php
-"Vsmoraes\Pdf\PdfServiceProvider"
+'Vsmoraes\Pdf\PdfServiceProvider'
 ```
 To the `providers` array on your `config/app.php`
+
+And
+
+```
+'PDF' => 'Vsmoraes\Pdf\PdfFacade',
+```
+To the `aliases` array on yout `config/app.php` in order to enable the PDF facade
 
 ## Usage
 
@@ -46,7 +53,7 @@ $router->get('/pdf/output', function() {
     PDF::load(view('pdfs.example1'))
         ->filename('/tmp/example1.pdf')
         ->output();
-    
+
     return 'PDF saved';
 });
 ```

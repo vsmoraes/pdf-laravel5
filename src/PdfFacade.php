@@ -12,6 +12,6 @@ class PdfFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'PDF';
+        return 'Vsmoraes\Pdf\Pdf';
     }
 }
