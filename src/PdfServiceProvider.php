@@ -8,7 +8,9 @@ class PdfServiceProvider extends ServiceProvider
 {
 
     /**
+     * Register the classes on the IoC container
      *
+     * @return void
      */
     public function register()
     {
@@ -22,6 +24,10 @@ class PdfServiceProvider extends ServiceProvider
             require_once base_path() . '/vendor/dompdf/dompdf/dompdf_config.inc.php';
 
             return new Dompdf(new \DOMPDF());
+        });
+
+        $this->app->bind('PDF', function() {
+            return $this->app->make('Vsmoraes\Pdf\Pdf');
         });
     }
 }

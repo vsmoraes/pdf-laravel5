@@ -6,27 +6,33 @@ use Illuminate\Http\Response;
 class Dompdf implements Pdf
 {
     /**
-     * @var
+     * DOMPDF instance
+     *
+     * @var \DOMPDF
      */
     protected $dompdfInstance;
 
     /**
+     * Path to the PDF
+     *
      * @var string
      */
     protected $filename = 'dompdf_out.pdf';
 
 
-    public function __construct(\DOMPDF $dompdf, array $config = [])
+    /**
+     * Inject the DOMPDF object
+     *
+     * @param \DOMPDF $dompdf
+     */
+    public function __construct(\DOMPDF $dompdf)
     {
         $this->dompdfInstance = $dompdf;
     }
 
 
     /**
-     * @param $html
-     * @param string $size
-     * @param string $orientation
-     * @return $this
+     * {@inheritdoc}
      */
     public function load($html, $size = 'A4', $orientation = 'portrait')
     {
@@ -37,8 +43,7 @@ class Dompdf implements Pdf
     }
 
     /**
-     * @param null $filename
-     * @return null|string
+     * {@inheritdoc}
      */
     public function filename($filename = null)
     {
@@ -50,9 +55,7 @@ class Dompdf implements Pdf
     }
 
     /**
-     * @param $size
-     * @param $orientation
-     * @return mixed
+     * {@inheritdoc}
      */
     public function setPaper($size, $orientation)
     {
@@ -60,7 +63,7 @@ class Dompdf implements Pdf
     }
 
     /**
-     * @return mixed
+     * {@inheritdoc}
      */
     public function render()
     {
@@ -68,7 +71,7 @@ class Dompdf implements Pdf
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function clear()
     {
@@ -78,8 +81,7 @@ class Dompdf implements Pdf
     }
 
     /**
-     * @param array $options
-     * @return mixed
+     * {@inheritdoc}
      */
     public function show($options = ['compress' => 1, 'Attachment' => 0])
     {
@@ -90,8 +92,7 @@ class Dompdf implements Pdf
     }
 
     /**
-     * @param array $options
-     * @return Response
+     * {@inheritdoc}
      */
     public function download($options = ['compress' => 1, 'Attachment' => 1])
     {
@@ -101,8 +102,7 @@ class Dompdf implements Pdf
     }
 
     /**
-     * @param array $options
-     * @return mixed
+     * {@inheritdoc}
      */
     public function output($options = ['compress' => 1])
     {
