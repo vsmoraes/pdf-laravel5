@@ -12,9 +12,7 @@ Add:
 ```
 To your `composer.json`
 
-or
-
-Run:
+or Run:
 ```
 composer require vsmoraes/laravel-pdf
 ```
@@ -27,7 +25,7 @@ To the `providers` array on your `config/app.php`
 
 And
 
-```
+```php
 'PDF' => 'Vsmoraes\Pdf\PdfFacade',
 ```
 To the `aliases` array on yout `config/app.php` in order to enable the PDF facade
@@ -36,21 +34,27 @@ To the `aliases` array on yout `config/app.php` in order to enable the PDF facad
 
 ```php
 $router->get('/pdf/view', function() {
-    return PDF::load(view('pdfs.example1'))->show();
+    $html = view('pdfs.example')->render();
+
+    return PDF::load($html)->show();
 });
 ```
 
 ### Force download
 ```php
 $router->get('/pdf/download', function() {
-    return PDF::load(view('pdfs.example1'))->download();
+    $html = view('pdfs.example')->render();
+
+    return PDF::load($html)->download();
 });
 ```
 
 ### Output to a file
 ```php
 $router->get('/pdf/output', function() {
-    PDF::load(view('pdfs.example1'))
+    $html = view('pdfs.example')->render();
+
+    PDF::load($html)
         ->filename('/tmp/example1.pdf')
         ->output();
 
@@ -59,7 +63,6 @@ $router->get('/pdf/output', function() {
 ```
 
 ### Inject on your controller
-
 ```php
 <?php namespace App\Http\Controllers;
 
