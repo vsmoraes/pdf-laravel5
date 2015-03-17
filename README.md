@@ -28,22 +28,22 @@ To the `providers` array on your `config/app.php`
 ## Usage
 
 ```php
-$router->get('/test', function() {
-    return PDF::load(view('pdfs.example1')->show();
+$router->get('/pdf/view', function() {
+    return PDF::load(view('pdfs.example1'))->show();
 });
 ```
 
 ### Force download
 ```php
 $router->get('/pdf/download', function() {
-    return PDF::load(view('pdfs.example1')->download();
+    return PDF::load(view('pdfs.example1'))->download();
 });
 ```
 
 ### Output to a file
 ```php
-$router->get('/pdf/download', function() {
-    PDF::load(view('pdfs.example1')
+$router->get('/pdf/output', function() {
+    PDF::load(view('pdfs.example1'))
         ->filename('/tmp/example1.pdf')
         ->output();
     
