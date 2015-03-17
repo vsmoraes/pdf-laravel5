@@ -49,6 +49,9 @@ class Dompdf implements Pdf
     {
         if ($filename) {
             $this->filename = $filename;
+
+            // chain when the filename is set
+            return $this;
         }
 
         return $this->filename;

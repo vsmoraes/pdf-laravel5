@@ -29,16 +29,29 @@ To the `providers` array on your `config/app.php`
 
 ```php
 $router->get('/test', function() {
-
-    $pdf = $this->app->make('Vsmoraes\Pdf\Pdf');
-
-    $pdf->load('<html><head></head><body><h1>Hello world!</h1></body></html>');
-    
-    return $pdf->show();
+    return PDF::load(view('pdfs.example1')->show();
 });
 ```
 
-# Inject on your controller
+### Force download
+```php
+$router->get('/pdf/download', function() {
+    return PDF::load(view('pdfs.example1')->download();
+});
+```
+
+### Output to a file
+```php
+$router->get('/pdf/download', function() {
+    PDF::load(view('pdfs.example1')
+        ->filename('/tmp/example1.pdf')
+        ->output();
+    
+    return 'PDF saved';
+});
+```
+
+### Inject on your controller
 
 ```php
 <?php namespace App\Http\Controllers;
@@ -56,11 +69,11 @@ class HomeController extends BaseControler
 
     public function helloWorld()
     {
-        $html = '<html><head></head><body><h1>Hello world!</h1></body></html>';
+        $html = view('pdfs.example1');
 
-        $this->pdf->load($html);
-
-        return $this->pdf->show();
+        return $this->pdf
+            ->load($html)
+            ->show();
     }
 }
 ```
