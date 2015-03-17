@@ -1,6 +1,6 @@
 # pdf-laravel5
 
-Laravel module for dompfg
+DOMPDF module for Laravel 5
 
 [![Build Status](https://api.travis-ci.org/vsmoraes/pdf-laravel5.svg)](https://travis-ci.org/vsmoraes/pdf-laravel5)
 [![License](https://poser.pugx.org/vsmoraes/laravel-pdf/license.svg)](https://packagist.org/packages/vsmoraes/laravel-pdf)
@@ -23,7 +23,7 @@ Then add:
 ```php
 "Vsmoraes\Pdf\PdfServiceProvider"
 ```
-To the `providers` array on you `config/app.php`
+To the `providers` array on your `config/app.php`
 
 ## Usage
 
@@ -33,7 +33,8 @@ $router->get('/test', function() {
     $pdf = $this->app->make('Vsmoraes\Pdf\Pdf');
 
     $pdf->load('<html><head></head><body><h1>Hello world!</h1></body></html>');
-    echo $pdf->show();
+    
+    return $pdf->show();
 });
 ```
 
