@@ -79,7 +79,7 @@ class HomeController extends BaseControler
 
     public function helloWorld()
     {
-        $html = view('pdfs.example1');
+        $html = view('pdfs.example1')->render();
 
         return $this->pdf
             ->load($html)
