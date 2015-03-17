@@ -9,7 +9,7 @@ class DompdfTest extends PHPUnit_Framework_TestCase
             ->setMethods(['load_html'])
             ->getMock();
 
-        $pdf = new \Vsmoraes\Pdf\Dompdf($stub, []);
+        $pdf = new \Vsmoraes\Pdf\Dompdf($stub);
 
         $stub->expects($this->once())
             ->method('load_html');
@@ -22,7 +22,7 @@ class DompdfTest extends PHPUnit_Framework_TestCase
         $stub = $this->getMockBuilder('\DOMPDF')
             ->getMock();
 
-        $pdf = new \Vsmoraes\Pdf\Dompdf($stub, []);
+        $pdf = new \Vsmoraes\Pdf\Dompdf($stub);
 
         $stub->expects($this->once())
             ->method('stream');
