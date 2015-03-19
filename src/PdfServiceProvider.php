@@ -7,13 +7,6 @@ use Vsmoraes\Pdf\Dompdf as MyDompdf;
 class PdfServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
-    /**
      * Register the classes on the IoC container
      *
      * @return void
