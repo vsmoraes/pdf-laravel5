@@ -24,7 +24,7 @@ class PdfServiceProvider extends ServiceProvider
         });
 
         $this->app->bind('Vsmoraes\Pdf\Pdf', function() {
-            define('DOMPDF_ENABLE_AUTOLOAD', false);
+            $this->define("DOMPDF_ENABLE_AUTOLOAD", false);
 
             require_once base_path() . '/vendor/dompdf/dompdf/dompdf_config.inc.php';
 
@@ -40,5 +40,18 @@ class PdfServiceProvider extends ServiceProvider
     public function provides()
     {
         return ['Vsmoraes\Pdf\Pdf'];
+    }
+
+    /**
+     * Define a value, if not already defined
+     *
+     * @param string $name
+     * @param string $value
+     */
+    protected function define($name, $value)
+    {
+        if (! defined($name)) {
+            define($name, $value);
+        }
     }
 }
