@@ -8,7 +8,7 @@ DOMPDF module for Laravel 5
 ## Instalation
 Add:
 ```
-"vsmoraes/laravel-pdf": "dev-master"
+"vsmoraes/laravel-pdf": "1.0.2"
 ```
 To your `composer.json`
 
