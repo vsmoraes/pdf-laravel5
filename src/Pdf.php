@@ -16,10 +16,10 @@ interface Pdf
     /**
      * Set the filename (full path) to where the file should be saved
      *
-     * @param null $filename
+     * @param string $filename
      * @return mixed
      */
-    public function filename($filename = null);
+    public function filename($filename);
 
     /**
      * Set paper size
