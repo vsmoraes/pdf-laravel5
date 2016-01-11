@@ -8,7 +8,7 @@ DOMPDF module for Laravel 5
 ## Instalation
 Add:
 ```
-"vsmoraes/laravel-pdf": "1.0.1"
+"vsmoraes/laravel-pdf": "1.0.2"
 ```
 To your `composer.json`
 
@@ -19,7 +19,7 @@ composer require vsmoraes/laravel-pdf
 
 Then add:
 ```php
-'Vsmoraes\Pdf\PdfServiceProvider'
+Vsmoraes\Pdf\PdfServiceProvider::class
 ```
 To the `providers` array on your `config/app.php`
 
@@ -49,6 +49,17 @@ $router->get('/pdf/download', function() {
 });
 ```
 
+### Return PDF as string
+```php
+$router->get('/pdf/output', function() {
+    $html = view('pdfs.example')->render();
+
+    return PDF::load($html)
+        ->output();
+});
+```
+
+
 ### Output to a file
 ```php
 $router->get('/pdf/output', function() {
@@ -68,7 +79,7 @@ $router->get('/pdf/output', function() {
 
 use Vsmoraes\Pdf\Pdf;
 
-class HomeController extends Controller
+class HomeController extends BaseControler
 {
     private $pdf;
 

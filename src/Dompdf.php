@@ -5,6 +5,8 @@ use Illuminate\Http\Response;
 
 class Dompdf implements Pdf
 {
+    CONST DOWNLOAD_FILENAME = 'dompdf_out.pdf';
+
     /**
      * DOMPDF instance
      *
@@ -17,7 +19,7 @@ class Dompdf implements Pdf
      *
      * @var string
      */
-    protected $filename = 'dompdf_out.pdf';
+    protected $filename;
 
 
     /**
@@ -45,16 +47,11 @@ class Dompdf implements Pdf
     /**
      * {@inheritdoc}
      */
-    public function filename($filename = null)
+    public function filename($filename)
     {
-        if ($filename) {
-            $this->filename = $filename;
+        $this->filename = $filename;
 
-            // chain when the filename is set
-            return $this;
-        }
-
-        return $this->filename;
+        return $this;
     }
 
     /**
@@ -91,7 +88,7 @@ class Dompdf implements Pdf
         $this->render();
         $this->clear();
 
-        return $this->dompdfInstance->stream($this->filename(), $options);
+        return $this->dompdfInstance->stream(static::DOWNLOAD_FILENAME, $options);
     }
 
     /**
@@ -111,6 +108,12 @@ class Dompdf implements Pdf
     {
         $this->render();
 
-        return $this->dompdfInstance->output($options);
+        $output = $this->dompdfInstance->output($options);
+
+        if (!is_null($this->filename)) {
+            file_put_contents($this->filename, $output);
+        }
+
+        return $output;
     }
 }
