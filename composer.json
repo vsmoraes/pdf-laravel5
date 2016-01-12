@@ -1,7 +1,7 @@
 {
     "name": "vsmoraes/laravel-pdf",
     "description": "DOMPDF module for Laravel 5",
-    "keywords": ["laravel", "dompdf", "pdf"],
+    "keywords": ["laravel", "dompdf", "pdf", "html", "css", "html2pdf"],
     "license": "MIT",
     "authors": [
         { "name": "Vinicius Moraes", "email": "vinicius@archlinux.com.br" }

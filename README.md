@@ -1,14 +1,13 @@
 # pdf-laravel5
 
-DOMPDF module for Laravel 5
+DOMPDF module for Laravel 5. Export your views as PDFs - with css support.
 
-[![Build Status](https://api.travis-ci.org/vsmoraes/pdf-laravel5.svg)](https://travis-ci.org/vsmoraes/pdf-laravel5)
-[![License](https://poser.pugx.org/vsmoraes/laravel-pdf/license.svg)](https://packagist.org/packages/vsmoraes/laravel-pdf)
+[![Build Status](https://api.travis-ci.org/vsmoraes/pdf-laravel5.svg)](https://travis-ci.org/vsmoraes/pdf-laravel5) [![Latest Stable Version](https://poser.pugx.org/vsmoraes/laravel-pdf/v/stable)](https://packagist.org/packages/vsmoraes/laravel-pdf) [![Total Downloads](https://poser.pugx.org/vsmoraes/laravel-pdf/downloads)](https://packagist.org/packages/vsmoraes/laravel-pdf) [![Latest Unstable Version](https://poser.pugx.org/vsmoraes/laravel-pdf/v/unstable)](https://packagist.org/packages/vsmoraes/laravel-pdf) [![License](https://poser.pugx.org/vsmoraes/laravel-pdf/license)](https://packagist.org/packages/vsmoraes/laravel-pdf)
 
 ## Instalation
 Add:
 ```
-"vsmoraes/laravel-pdf": "1.0.2"
+"vsmoraes/laravel-pdf": "^1.0"
 ```
 To your `composer.json`
 
