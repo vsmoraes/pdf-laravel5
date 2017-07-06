@@ -1,6 +1,7 @@
 <?php
 namespace Vsmoraes\Pdf;
 
+use Dompdf\Dompdf;
 use Illuminate\Support\ServiceProvider;
 use Vsmoraes\Pdf\Dompdf as MyDompdf;
 
@@ -11,6 +12,7 @@ class PdfServiceProvider extends ServiceProvider
      *
      * @var bool
      */
+    protected $defer = true;
 
     /**
      * Register the classes on the IoC container
@@ -19,16 +21,12 @@ class PdfServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('DOMPDF', function() {
-            return new \DOMPDF();
+        $this->app->bind(Dompdf::class, function() {
+            return new Dompdf();
         });
 
-        $this->app->bind('Vsmoraes\Pdf\Pdf', function() {
-            $this->define("DOMPDF_ENABLE_AUTOLOAD", false);
-
-            require_once base_path() . '/vendor/dompdf/dompdf/dompdf_config.inc.php';
-
-            return new Dompdf(new \DOMPDF());
+        $this->app->bind(Pdf::class, function() {
+            return new MyDompdf(new Dompdf());
         });
     }
 
@@ -39,19 +37,8 @@ class PdfServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['Vsmoraes\Pdf\Pdf'];
-    }
-
-    /**
-     * Define a value, if not already defined
-     *
-     * @param string $name
-     * @param string $value
-     */
-    protected function define($name, $value)
-    {
-        if (! defined($name)) {
-            define($name, $value);
-        }
+        return [
+            Pdf::class,
+        ];
     }
 }
