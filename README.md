@@ -7,7 +7,7 @@ DOMPDF module for Laravel 5. Export your views as PDFs - with css support.
 ## Instalation
 Add:
 ```
-"vsmoraes/laravel-pdf": "^1.0"
+"vsmoraes/laravel-pdf": "^2.0"
 ```
 To your `composer.json`
 
@@ -32,7 +32,7 @@ To the `aliases` array on yout `config/app.php` in order to enable the PDF facad
 ## Usage
 
 ```php
-$router->get('/pdf/view', function() {
+Route::get('/pdf/view', function() {
     $html = view('pdfs.example')->render();
 
     return PDF::load($html)->show();
@@ -41,7 +41,7 @@ $router->get('/pdf/view', function() {
 
 ### Force download
 ```php
-$router->get('/pdf/download', function() {
+Route::get('/pdf/download', function() {
     $html = view('pdfs.example')->render();
 
     return PDF::load($html)->download();
@@ -50,7 +50,7 @@ $router->get('/pdf/download', function() {
 
 ### Return PDF as string
 ```php
-$router->get('/pdf/output', function() {
+Route::get('/pdf/output', function() {
     $html = view('pdfs.example')->render();
 
     return PDF::load($html)
@@ -61,7 +61,7 @@ $router->get('/pdf/output', function() {
 
 ### Output to a file
 ```php
-$router->get('/pdf/output', function() {
+Route::get('/pdf/output', function() {
     $html = view('pdfs.example')->render();
 
     PDF::load($html)
@@ -97,3 +97,19 @@ class HomeController extends BaseControler
     }
 }
 ```
+
+## Configuration
+Dompdf allows you to configure a bunch of things on your PDF file. In previous versions we used to accomplish this through environment vars, now you can change this configuration keys on the fly:
+
+```php
+Route::get('/pdf/view', function() {
+    $html = view('pdfs.example')->render();
+    
+    $defaultOptions = PDF::getOptions();
+    $defaultOptions->setDefaultFont('Courier');
+    
+    return PDF::setOptions($defaultOptions)->load($html)->download();
+});
+```
+
+For the complete configuration reference: [Dompdf options](https://github.com/dompdf/dompdf/blob/master/src/Options.php)
