@@ -58,6 +58,15 @@ Route::get('/pdf/output', function() {
 });
 ```
 
+### Set paper size and orientation
+```php
+    Route::get('/pdf/output', function() {
+        $html = view('pdfs.example')->render();
+    
+        return PDF::load($html, 'A4', 'landscape')
+            ->output();
+    });
+```
 
 ### Output to a file
 ```php
